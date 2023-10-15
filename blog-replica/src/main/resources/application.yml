@@ -1,0 +1,29 @@
+server:
+  port: 8011
+spring:
+  profiles:
+    active: default
+  application:
+    name: blog-replica
+  data:
+    mongodb:
+      port: 27017
+      host: localhost
+      database: blogReadDb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_3PQhzGhke
+user:
+  replica:
+    url: http://USER-REPLICA/api/v1.0/blogsite/users/
+

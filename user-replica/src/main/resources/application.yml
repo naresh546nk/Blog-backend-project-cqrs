@@ -1,0 +1,22 @@
+server:
+  port: 8002
+
+spring:
+  profiles:
+    active: default
+  application:
+    name: user-replica
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  data:
+    mongodb:
+      port: 27017
+      host: localhost
+      database: blogReadDb
+  h2:
+    console:
+      enabled: true
+
+

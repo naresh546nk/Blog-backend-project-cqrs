@@ -1,0 +1,94 @@
+version: "3.8"
+
+services:
+
+  configserver:
+    image: naresh546/banking-config:0.0.11-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8100:8100"
+    networks:
+     - banking
+  eurekaserver:
+    image: naresh546/eurekaserver:0.0.11-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8761:8761"
+    networks:
+      - banking
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8100/
+
+
+      
+  accounts:
+    image: naresh546/accounts:0.0.11-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8081:8081"
+    networks:
+      - banking
+    depends_on:
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8100/
+  
+  loans:
+    image: naresh546/loans:0.0.11-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8083:8083"
+    networks:
+      - banking
+    depends_on:
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8100/
+    
+  cards:
+    image: naresh546/cards:0.0.11-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8082:8082"
+    networks:
+      - banking
+    depends_on:
+      - configserver
+      - eurekaserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8100/
+      
+networks:
+  banking:

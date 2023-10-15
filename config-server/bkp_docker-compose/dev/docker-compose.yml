@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+
+  configserver:
+    image: naresh546/banking-config:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8100:8100"
+    networks:
+     - banking
+      
+  accounts:
+    image: naresh546/accounts:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8081:8081"
+    networks:
+      - banking
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8100/
+  
+  loans:
+    image: naresh546/loan:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8083:8083"
+    networks:
+      - banking
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8100/
+    
+  cards:
+    image: naresh546/card:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8082:8082"
+    networks:
+      - banking
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8100/
+      
+networks:
+  banking:
