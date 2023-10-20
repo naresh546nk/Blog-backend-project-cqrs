@@ -2,6 +2,7 @@ package com.blog.site.quary.api.projection;
 
 import com.blog.site.core.api.entity.BlogUser;
 
+import com.blog.site.core.api.exception.NoUserFoundException;
 import com.blog.site.quary.api.query.FindAllUsers;
 import com.blog.site.quary.api.query.FindUserById;
 import com.blog.site.quary.api.query.FindUserByUsername;
@@ -19,10 +20,8 @@ import java.util.Optional;
 @Component
 @Slf4j
 public class UserProjection {
-
     @Autowired
     private UserRepository userRepository;
-
     @QueryHandler
     public List<BlogUser> handle(FindAllUsers findAllUsers) {
 
@@ -31,7 +30,7 @@ public class UserProjection {
     }
 
     @QueryHandler
-    public  BlogUser handle(FindUserByUsername findUserByUsername){
+    public  BlogUser handle(FindUserByUsername findUserByUsername) {
         log.info("Query Handler : "+findUserByUsername);
         Optional<BlogUser> byUsername = userRepository.findByUsername(findUserByUsername.getUsername());
         if(byUsername.isPresent()){
@@ -42,7 +41,7 @@ public class UserProjection {
     }
 
     @QueryHandler
-    public  UserDto handle(FindUserById findUserById) throws Exception {
+    public  UserDto handle(FindUserById findUserById) {
         log.info("QueryHandler");
         Optional<BlogUser> userById = userRepository.findById(findUserById.getId());
         if(userById.isPresent()){
@@ -55,7 +54,7 @@ public class UserProjection {
                     .build();
 
         }else{
-            throw new Exception("No Record Found with Id :"+findUserById.getId());
+          return null;
         }
     }
 }

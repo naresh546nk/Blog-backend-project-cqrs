@@ -5,15 +5,16 @@ import com.commons.commands.DeleteUserCommand;
 import com.commons.events.DeleteUserEvent;
 import com.commons.events.UserCreateEvent;
 import org.axonframework.test.aggregate.AggregateTestFixture;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 
 import java.util.UUID;
 
 public class UserAggregateTest {
     private AggregateTestFixture<UserAggregate> fixture;
-    @Before
+
+    @BeforeEach
     public void setUp() {
         fixture = new AggregateTestFixture<>(UserAggregate.class);
     }

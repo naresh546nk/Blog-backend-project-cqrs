@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 @Slf4j
 public class UserValidation {
     public static boolean isValidUser(BlogUser blogUser) throws ValidationException {
+       log.info("validation started : {},blogUser");
         String nameRegx = "^(([A-Z]|[a-z])+(([A-Z ]|[a-z])+)?){8,}$";
         String emailRegx = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
@@ -27,7 +28,7 @@ public class UserValidation {
             throw  new ValidationException("Authority validation failed, it should be either Admin or User");
         }
 
-
+        log.info("User data pass the validation .");
         return true;
     }
 }

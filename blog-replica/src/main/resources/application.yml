@@ -7,6 +7,7 @@ spring:
     name: blog-replica
   data:
     mongodb:
+#      uri: mongodb+srv://nareshkumar546nk:Password@mongocluster.3khr6ur.mongodb.net/
       port: 27017
       host: localhost
       database: blogReadDb
@@ -26,4 +27,19 @@ spring:
 user:
   replica:
     url: http://USER-REPLICA/api/v1.0/blogsite/users/
-
+#eureka:
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      default-zone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+#logging:
+#  file:
+#    name: ${logging.file.path}/blog-replica.log
+#    path: E:/Practics/EAccedamy-project/Blog-backend-project/Log
+#  pattern:
+#    rolling-file-name: ${logging.file.path}/blog-replica-%d{yyyy-MM-dd}.%i.log
+#    file:
+#      max-history: 7

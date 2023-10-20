@@ -31,10 +31,10 @@ public class UserAggregate {
     }
 
     @EventHandler
-    public  void on(DeleteUserEvent evnt){
-        log.info("Event : {}",evnt);
-        repository.deleteById(evnt.getId().toString());
-        log.info("User deleted successfully with Id : {}",evnt.getId());
+    public  void on(DeleteUserEvent event){
+        log.info("Event : {}",event);
+        repository.deleteById(event.getId().toString());
+        log.info("User deleted successfully with Id : {}",event.getId());
 
     }
 

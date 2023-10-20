@@ -1,33 +1,32 @@
 package com.blog.site.command.api.controller;
 
 import com.blog.site.core.api.entity.BlogUser;
-import com.blog.site.core.api.exception.ValidationException;
 import com.blog.site.core.api.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@RunWith(SpringRunner.class)
-@WebMvcTest
-@AutoConfigureMockMvc
-@ContextConfiguration(classes = {UserCommandController.class, CommandGateway.class, UserRepository.class})
+//@RunWith(SpringRunner.class)
+//@WebMvcTest
+//@AutoConfigureMockMvc
+//@ContextConfiguration(classes = {UserCommandController.class, CommandGateway.class, UserRepository.class})
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(UserCommandController.class)
 @Slf4j
 public class UserCommandControllerTest {
 
@@ -95,12 +94,10 @@ public class UserCommandControllerTest {
         String json=objectMapper.writeValueAsString(user);
         Mockito.when(userRepository.save(Mockito.any(BlogUser.class))).thenReturn(savedUser);
 
-        Exception ex = Assertions.assertThrows(Exception.class, () -> {
             String contentAsString = mockMvc.perform(post(BASE_URL + "/add").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
                     .andReturn().getResponse().getContentAsString();
-        });
-        Assertions.assertEquals(ex.getMessage().contains("validation"),true);
+        Assertions.assertEquals(contentAsString.contains("validation"),true);
     }
 
     @Test
@@ -113,13 +110,12 @@ public class UserCommandControllerTest {
         String json=objectMapper.writeValueAsString(user);
         Mockito.when(userRepository.save(Mockito.any(BlogUser.class))).thenReturn(savedUser);
 
-        Exception ex = Assertions.assertThrows(Exception.class, () -> {
+
             String contentAsString = mockMvc.perform(post(BASE_URL + "/add").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
                     .andReturn().getResponse().getContentAsString();
-        });
-        log.info("message :{}",ex.getMessage());
-        Assertions.assertEquals(ex.getMessage().contains("validation"),true);
+        log.info("message :{}",contentAsString);
+        Assertions.assertEquals(contentAsString.contains("validation"),true);
     }
 
     @Test
@@ -131,14 +127,11 @@ public class UserCommandControllerTest {
 
         String json=objectMapper.writeValueAsString(user);
         Mockito.when(userRepository.save(Mockito.any(BlogUser.class))).thenReturn(savedUser);
-
-        Exception ex = Assertions.assertThrows(Exception.class, () -> {
             String contentAsString = mockMvc.perform(post(BASE_URL + "/add").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
                     .andReturn().getResponse().getContentAsString();
-        });
-        log.info("message :{}",ex.getMessage());
-        Assertions.assertEquals(ex.getMessage().contains("validation"),true);
+        log.info("message :{}",contentAsString);
+        Assertions.assertEquals(contentAsString.contains("validation"),true);
     }
 
 

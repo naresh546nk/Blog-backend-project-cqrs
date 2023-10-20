@@ -21,6 +21,9 @@ target/
 .mvn/
 mvnw.cmd
 mvnw
+data
+events
+config
 
 ### NetBeans ###
 /nbproject/private/

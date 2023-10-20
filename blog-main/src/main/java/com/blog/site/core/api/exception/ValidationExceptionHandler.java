@@ -35,7 +35,7 @@ public class ValidationExceptionHandler {
     public ResponseEntity<Map<String, String>> handleValidationExceptions(
             ValidationException ex) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("message","ex.getMessage");
+        errors.put("message",ex.getMessage());
         log.debug("errors :"+errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }

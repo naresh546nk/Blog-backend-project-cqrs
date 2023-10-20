@@ -2,21 +2,19 @@ server:
   port: 8000
 spring:
   application:
-    name: Blog-Site
+    name: user
   datasource:
-    url: jdbc:mysql://blog-site-database.ckzrz1mw2ejg.us-east-1.rds.amazonaws.com:3306/blogs
+    url: jdbc:mysql://localhost:3306/blogsite?createDatabaseIfNotExist=true
     username: root
-    password: Password
-    driver-class-name: com.mysql.jdbc.Driver
+    password: root
   jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-#    hibernate:
-      ddl-auto: create
-    show-sql: true
   h2:
     console:
       enabled: true
-
 #  spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQLDialect

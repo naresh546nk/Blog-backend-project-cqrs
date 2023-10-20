@@ -1,6 +1,7 @@
 package com.blog.site.core.api.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.queryhandling.QueryExecutionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -25,9 +26,33 @@ public class ExceptionHandlerAdvice {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        log.debug("errors :"+errors);
+        log.info("errors :"+errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
+
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({NoUserFoundException.class})
+    public ResponseEntity<Map<String, String>> noUserFoundException(
+            NoUserFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+            errors.put("message", ex.getMessage());
+        log.info("errors :"+errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({QueryExecutionException.class})
+    public ResponseEntity<Map<String, String>> queryExecutionException(
+            QueryExecutionException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("message", ex.getMessage());
+        log.info("errors :"+errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+    }
+
 
 
 
