@@ -44,9 +44,9 @@ public class BlogProjection {
         return byCategory;
     }
     @QueryHandler
-    public List<Blog> handle(FindByStartAndEndDate findByStartAndEndDate){
+    public List<Blog> handle(FindByCategoryStartAndEndDate findByStartAndEndDate){
         log.info("Fetching by start and end data ");
-        return mongoTemplateService.findByStartAndEndDate(findByStartAndEndDate.getStart(),findByStartAndEndDate.getEnd());
+        return mongoTemplateService.findByStartAndEndDate(findByStartAndEndDate.getCategory(),findByStartAndEndDate.getStart(),findByStartAndEndDate.getEnd());
     }
 
     @QueryHandler

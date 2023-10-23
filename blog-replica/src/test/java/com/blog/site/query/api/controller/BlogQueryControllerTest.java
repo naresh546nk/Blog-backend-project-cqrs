@@ -20,6 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -65,11 +66,13 @@ public class BlogQueryControllerTest {
             .category("Motivation")
             .article(article)
             .userId("10")
+            .createdOn(LocalDate.now())
             .build();
     @Test
     public  void getAllBlogs_test() throws Exception {
         Blog testBlog=blog;
         Blog savedBlog=blog;
+        String s = testBlog.toString();
         savedBlog.setId(Long.valueOf(5));
         FindAllBlogs findAllBlogs=new FindAllBlogs();
         Mockito.when(blogQueryService.findAllBlogs(Mockito.any())).thenReturn(List.of(savedBlog));
@@ -114,11 +117,11 @@ public class BlogQueryControllerTest {
 
 
     @Test
-    public  void blogByTimeRange_test() throws Exception {
+    public  void blogByCategoryDateRange_test() throws Exception {
         Blog testBlog=blog;
         Blog savedBlog=blog;
         Mockito.when(blogQueryService.findByStartAndEndDate(Mockito.any())).thenReturn(List.of(savedBlog));
-        String contentAsString = mockMvc.perform(get(BASE_URL+"/{startDate}/{endDate}", "2023-09-06","2023-11-10")
+        String contentAsString = mockMvc.perform(get(BASE_URL+"/info/{category}/{startDate}/{endDate}", "Motivation","2023-09-06","2023-11-10")
                 .contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();

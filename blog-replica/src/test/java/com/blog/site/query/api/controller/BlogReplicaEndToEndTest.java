@@ -45,56 +45,46 @@ public class BlogReplicaEndToEndTest {
     ObjectMapper objectMapper;
     private String BASE_URL="/api/v1.0/blogsite/blogs";
 
-//    private String article="Women account for one of the groups most affected by the disparities in the legal system. Therefore, this sphere " +
-//            "has been an area of intense interest for feminist researchers and activists. Subsequently, various standpoints are expressed through different means of " +
-//            "communication, calling for an equal approach to justice for both sexes. Such kinds of activism positively affect society, as they attract the public’s attention " +
-//            "to a topical issue. Willison and O’Brien (2016) state that the incarceration rate of women in the United States has grown at a quicker pace than a similar number for men." +
-//            " Accordingly, it is possible to conclude that the country is currently experiencing the phenomenon of mass female incarceration, which reflects the unfair side of the legal system."+
-//            "Women account for one of the groups most affected by the disparities in the legal system. Therefore, this sphere " +
-//            "has been an area of intense interest for feminist researchers and activists. Subsequently, various standpoints are expressed through different means of " +
-//            "communication, calling for an equal approach to justice for both sexes. Such kinds of activism positively affect society, as they attract the public’s attention " +
-//            "to a topical issue. Willison and O’Brien (2016) state that the incarceration rate of women in the United States has grown at a quicker pace than a similar number for men." +
-//            " Accordingly, it is possible to conclude that the country is currently experiencing the phenomenon of mass female incarceration, which reflects the unfair side of the legal system."+
-//            "Women account for one of the groups most affected by the disparities in the legal system. Therefore, this sphere " +
-//            "has been an area of intense interest for feminist researchers and activists. Subsequently, various standpoints are expressed through different means of " +
-//            "communication, calling for an equal approach to justice for both sexes. Such kinds of activism positively affect society, as they attract the public’s attention " +
-//            "to a topical issue. Willison and O’Brien (2016) state that the incarceration rate of women in the United States has grown at a quicker pace than a similar number for men." +
-//            " Accordingly, it is possible to conclude that the country is currently experiencing the phenomenon of mass female incarceration, which reflects the unfair side of the legal system.";
-//
-//    private Blog blog=Blog.builder()
-//            .blogName("This is my blogName")
-//            .authorName("Myke Tyson")
-//            .category("Motivation")
-//            .article(article)
-//            .userId("10")
-//            .build();
 
     @Test
-    public  void createBlog_test() throws Exception {
-        ResponseEntity<Object> result = testRestTemplate.getForEntity(BASE_URL + "/getall", Object.class);
+    public  void getAllBlogs_test() throws Exception {
+        ResponseEntity<List> result = testRestTemplate.getForEntity(BASE_URL + "/getall", List.class);
         Assertions.assertNotNull(result);
-        log.info("Result of EndToEnd testing : {}",result.getBody());
+        Assertions.assertEquals(result.getBody().size()>=1,true);
+        log.info("Result of EndToEnd AllBlogs: {}",result.getBody());
     }
+
 
     @Test
     public  void findDistinctCategory_test() throws Exception {
-        ResponseEntity<Object> result = testRestTemplate.getForEntity(BASE_URL + "/info/category", Object.class);
+        ResponseEntity<List> result = testRestTemplate.getForEntity(BASE_URL + "/info/category", List.class);
         Assertions.assertNotNull(result);
-        log.info("Result of EndToEnd testing : {}",result.getBody());
+        Assertions.assertEquals(result.getBody().size()>=1,true);
+        log.info("Result of EndToEnd findDistinctCategory : {}",result.getBody());
     }
 
     @Test
-    public  void blogByTimeRange_test() throws Exception {
-        ResponseEntity<Object> result = testRestTemplate.getForEntity(BASE_URL + "/2023/01/01/2023/12/12", Object.class);
+    public  void blogByCategory_test() throws Exception {
+        ResponseEntity<List> result = testRestTemplate.getForEntity(BASE_URL + "/info/Motivation", List.class);
         Assertions.assertNotNull(result);
-        log.info("Result of EndToEnd testing : {}",result.getBody());
+        Assertions.assertEquals(result.getBody().size()>=1,true);
+        log.info("Result of EndToEnd blog By Category : {}",result.getBody());
+    }
+
+    @Test
+    public  void blogsByCategoryDateRange_test() throws Exception {
+        ResponseEntity<List> result = testRestTemplate.getForEntity(BASE_URL + "/info/Motivation/2023-01-01/2023-12-12", List.class);
+
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(result.getBody().size()>=1,true);
+        log.info("Result of EndToEnd blogsByCategoryDateRange : {}",result.getBody());
     }
 
     @Test
     public  void blogById_test() throws Exception {
-        ResponseEntity<BlogDto> result = testRestTemplate.getForEntity(BASE_URL + "/1", BlogDto.class);
+        ResponseEntity<BlogDto> result = testRestTemplate.getForEntity(BASE_URL + "/4", BlogDto.class);
         Assertions.assertNotNull(result);
-        log.info("Result of EndToEnd testing : {}",result.getBody());
+        log.info("Result of EndToEnd blogById : {}",result.getBody());
     }
 
 

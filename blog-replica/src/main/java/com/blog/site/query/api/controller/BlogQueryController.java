@@ -55,9 +55,10 @@ public class BlogQueryController {
 
     }
 
-    @GetMapping(value = "/blogs/{startDate}/{endDate}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Blog>> blogByTimeRange(@Valid @PathVariable String startDate ,@Valid @PathVariable String endDate) {
-        FindByStartAndEndDate findByStartAndEndDate=FindByStartAndEndDate.builder()
+    @GetMapping(value = "/blogs/info/{category}/{startDate}/{endDate}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Blog>> blogByCategoryDateRange(@PathVariable String category, @PathVariable String startDate ,@Valid @PathVariable String endDate) {
+        FindByCategoryStartAndEndDate findByStartAndEndDate=FindByCategoryStartAndEndDate.builder()
+                .category(category)
                 .start(LocalDate.parse(startDate))
                 .end(LocalDate.parse(endDate))
                 .build();
@@ -77,11 +78,5 @@ public class BlogQueryController {
         log.info("Find the blog by id :"+blogDto);
         return ResponseEntity.status(HttpStatus.OK).body(blogDto);
     }
-//For testing only
-//    @GetMapping("/{id}")
-//    public ResponseEntity<UserDto> getUserDto(@PathVariable String id){
-//        UserDto userById = userService.getUserById(id);
-//        return ResponseEntity.status(HttpStatus.OK).body(userById);
-//    }
 
 }

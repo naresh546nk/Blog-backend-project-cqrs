@@ -2,9 +2,10 @@ package com.blog.site.core.api.validation;
 
 import com.blog.site.core.api.entity.Blog;
 import com.blog.site.core.api.exception.ValidationException;
+import org.springframework.stereotype.Component;
 
-import java.util.regex.Pattern;
 
+@Component
 public class BlogValidation {
     public static boolean isValidUser(Blog blog) throws ValidationException {
         int len=blog.getArticle().split(" ").length;

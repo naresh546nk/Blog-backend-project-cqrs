@@ -76,7 +76,8 @@ public class BlogQueryServiceTest {
 
     @Test
     public  void findByStartAndEndDate_test(){
-        FindByStartAndEndDate findByStartAndEndDate= FindByStartAndEndDate.builder()
+        FindByCategoryStartAndEndDate findByStartAndEndDate= FindByCategoryStartAndEndDate.builder()
+                .category("Motivation")
                 .start(LocalDate.now())
                 .end(LocalDate.now())
                 .build();

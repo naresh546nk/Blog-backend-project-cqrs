@@ -1,13 +1,11 @@
-package com.blog.site.quary.api.projection;
+package com.blog.site.query.api.projection;
 
 import com.blog.site.core.api.entity.BlogUser;
 
-import com.blog.site.core.api.exception.NoUserFoundException;
-import com.blog.site.quary.api.query.FindAllUsers;
-import com.blog.site.quary.api.query.FindUserById;
-import com.blog.site.quary.api.query.FindUserByUsername;
+import com.blog.site.query.api.query.FindAllUsers;
+import com.blog.site.query.api.query.FindUserById;
+import com.blog.site.query.api.query.FindUserByUsername;
 import com.blog.site.core.api.repository.UserRepository;
-import com.commons.dto.BlogDto;
 import com.commons.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;

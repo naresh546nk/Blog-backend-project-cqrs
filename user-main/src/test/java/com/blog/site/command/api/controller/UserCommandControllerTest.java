@@ -21,10 +21,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-//@RunWith(SpringRunner.class)
-//@WebMvcTest
-//@AutoConfigureMockMvc
-//@ContextConfiguration(classes = {UserCommandController.class, CommandGateway.class, UserRepository.class})
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UserCommandController.class)
 @Slf4j
@@ -82,6 +78,22 @@ public class UserCommandControllerTest {
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
                     .andReturn().getResponse().getContentAsString();
     }
+
+    @Test
+    public  void register_invalid_url_test() throws Exception {
+        BlogUser user=blogUser;
+        user.setName("");
+        BlogUser savedUser=blogUser;
+        savedUser.setId(Long.valueOf(5));
+
+        String json=objectMapper.writeValueAsString(user);
+        Mockito.when(userRepository.save(Mockito.any(BlogUser.class))).thenReturn(savedUser);
+
+        String contentAsString = mockMvc.perform(post("/addException").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
+                .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
+                .andReturn().getResponse().getContentAsString();
+    }
+
 
 
     @Test

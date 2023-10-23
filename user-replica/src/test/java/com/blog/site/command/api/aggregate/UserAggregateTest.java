@@ -4,11 +4,8 @@ package com.blog.site.command.api.aggregate;
 import com.blog.site.command.api.aggrigate.UserAggregate;
 import com.blog.site.core.api.entity.BlogUser;
 import com.blog.site.core.api.repository.UserRepository;
-import com.blog.site.quary.api.service.UserQueryService;
 import com.commons.events.DeleteUserEvent;
 import com.commons.events.UserCreateEvent;
-import org.apache.catalina.User;
-import org.axonframework.queryhandling.QueryGateway;
 import org.axonframework.queryhandling.QueryUpdateEmitter;
 import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,12 +45,20 @@ public class UserAggregateTest {
     }
 
     @Test
-    void userCreatedEvent() {
+    void userCreatedEvent_test1() {
         UserCreateEvent event =new UserCreateEvent();
         BeanUtils.copyProperties(user,event);
         event.setUuid(UUID.randomUUID().toString());
         handler.on(event);
        // verify(emitter, times(1)).emit(eq(UserCreateEvent.class), any(), any(BlogUser.class));
+    }
+
+    @Test
+    void userCreatedEvent_test2() {
+        UserCreateEvent event =new UserCreateEvent();
+        BeanUtils.copyProperties(user,event);
+        handler.on(event);
+        // verify(emitter, times(1)).emit(eq(UserCreateEvent.class), any(), any(BlogUser.class));
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.blog.site.quary.api.controller;
+package com.blog.site.query.api.controller;
 
 import com.blog.site.core.api.entity.BlogUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -71,5 +71,11 @@ public class UserReplicaEndToEndTest {
         log.info("Result of EndToEnd testing : {}",result.getBody());
     }
 
+    @Test
+    public  void getUserById_Exception(){
+        ResponseEntity<BlogUser> result = testRestTemplate.getForEntity("/getall/1",BlogUser.class );
+        Assertions.assertNotNull(result);
+        log.info("Result of EndToEnd testing : {}",result.getBody());
+    }
 
 }

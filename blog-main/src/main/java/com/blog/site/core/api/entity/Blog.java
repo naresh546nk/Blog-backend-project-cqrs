@@ -31,5 +31,6 @@ public class Blog {
     private String authorName;
     private LocalDate createdOn=LocalDate.now();
     @NotNull(message = "Blog User can not be null")
+    @NotBlank(message = "Blog User can not be blank")
     private String userId;
 }

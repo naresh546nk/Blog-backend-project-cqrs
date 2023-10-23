@@ -1,9 +1,9 @@
-package com.blog.site.quary.api.service;
+package com.blog.site.query.api.service;
 
 import com.blog.site.core.api.entity.BlogUser;
-import com.blog.site.quary.api.query.FindAllUsers;
-import com.blog.site.quary.api.query.FindUserById;
-import com.blog.site.quary.api.query.FindUserByUsername;
+import com.blog.site.query.api.query.FindAllUsers;
+import com.blog.site.query.api.query.FindUserById;
+import com.blog.site.query.api.query.FindUserByUsername;
 import com.commons.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
@@ -42,7 +42,7 @@ public class UserQueryServiceTest {
 
     @Test
     public  void findUserByUsernameTest() throws ExecutionException, InterruptedException {
-        FindUserByUsername findUsername = new FindUserByUsername("naresh546.nk@gmail.com");
+        FindUserByUsername findUsername = FindUserByUsername.builder().username("naresh546.nk@gmail.com").build();
         CompletableFuture<BlogUser> feature = CompletableFuture.supplyAsync(() -> getUser());
         log.info("Feature : {}",feature);
         log.info("Get data for featur : {} ",feature.get());
@@ -55,7 +55,7 @@ public class UserQueryServiceTest {
 
     @Test
     public  void findUserByIdTest() throws ExecutionException, InterruptedException {
-        FindUserById userById =new FindUserById("3");
+        FindUserById userById =FindUserById.builder().id("3").build();
 
         CompletableFuture<UserDto> userDtoFeature = CompletableFuture.supplyAsync(() -> getUserDto());
         Mockito.when(queryGateway.query(userById, ResponseTypes.instanceOf(UserDto.class))).thenReturn(userDtoFeature);

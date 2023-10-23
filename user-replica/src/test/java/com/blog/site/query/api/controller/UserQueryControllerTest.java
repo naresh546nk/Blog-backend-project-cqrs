@@ -1,10 +1,10 @@
-package com.blog.site.quary.api.controller;
+package com.blog.site.query.api.controller;
 
 import com.blog.site.core.api.entity.BlogUser;
-import com.blog.site.quary.api.query.FindAllUsers;
-import com.blog.site.quary.api.query.FindUserById;
-import com.blog.site.quary.api.query.FindUserByUsername;
-import com.blog.site.quary.api.service.UserQueryService;
+import com.blog.site.query.api.query.FindAllUsers;
+import com.blog.site.query.api.query.FindUserById;
+import com.blog.site.query.api.query.FindUserByUsername;
+import com.blog.site.query.api.service.UserQueryService;
 import com.commons.dto.UserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +54,7 @@ public class UserQueryControllerTest {
             BlogUser savedUser=blogUser;
             savedUser.setId("5");
             String json=objectMapper.writeValueAsString(user);
-            FindUserByUsername byUsername=new FindUserByUsername();
+            FindUserByUsername byUsername=FindUserByUsername.builder().build();
             Mockito.when(service.findUserByUsername(Mockito.any(FindUserByUsername.class))).thenReturn(savedUser);
             String contentAsString = mockMvc.perform(get(BASE_URL+"/username/{username}","naresh546.nk@gmail.com")
                     .contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
@@ -66,6 +66,22 @@ public class UserQueryControllerTest {
             Assertions.assertEquals(contentAsString.contains("id"),true);
             log.info("Response :"+contentAsString);
         }
+
+    @Test
+    public  void gerUserByUserName_Exception_Test() throws Exception {
+        BlogUser user = blogUser;
+        BlogUser savedUser = blogUser;
+        savedUser.setId("5");
+        String json = objectMapper.writeValueAsString(user);
+        FindUserByUsername byUsername = FindUserByUsername.builder().build();
+        Mockito.when(service.findUserByUsername(Mockito.any(FindUserByUsername.class))).thenReturn(savedUser);
+        String contentAsString = mockMvc.perform(get(BASE_URL + "/{username}", "naresh546.nk@gmail.com")
+                .contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is5xxServerError())
+                .andReturn().getResponse().getContentAsString();
+        log.info("contentAs String : {}", contentAsString);
+
+    }
 
     @Test
     public  void gerUserById_Test() throws Exception {
@@ -89,7 +105,7 @@ public class UserQueryControllerTest {
         BlogUser user=blogUser;
 
         String json=objectMapper.writeValueAsString(user);
-        FindUserByUsername byUsername=new FindUserByUsername();
+        FindUserByUsername byUsername=FindUserByUsername.builder().build();
         Mockito.when(service.findAllUser(Mockito.any(FindAllUsers.class))).thenReturn(List.of(user));
         String contentAsString = mockMvc.perform(get(BASE_URL+"/getall")
                 .contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")

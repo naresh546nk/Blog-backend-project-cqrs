@@ -90,12 +90,13 @@ public class BlogProjectionTest {
 
     @Test
     public  void  findByStartAndEndDate_test() throws Exception {
-        FindByStartAndEndDate findByStartAndEndDate= FindByStartAndEndDate.builder()
+        FindByCategoryStartAndEndDate findByStartAndEndDate= FindByCategoryStartAndEndDate.builder()
+                .category("Motivation")
                 .start(LocalDate.now().minusDays(13))
                 .end(LocalDate.now())
                 .build();
 
-        Mockito.when(mongoTemplateService.findByStartAndEndDate(Mockito.any(LocalDate.class), Mockito.any(LocalDate.class))).thenReturn(List.of(blog));
+        Mockito.when(mongoTemplateService.findByStartAndEndDate(Mockito.any(String.class),Mockito.any(LocalDate.class), Mockito.any(LocalDate.class))).thenReturn(List.of(blog));
         List<Blog> handle = projection.handle(findByStartAndEndDate);
         Assertions.assertNotNull(handle);
         Assertions.assertEquals(handle.size(),1);

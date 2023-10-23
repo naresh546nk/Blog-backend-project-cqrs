@@ -2,6 +2,7 @@ package com.blog.site.command.api.controller;
 
 import com.blog.site.core.api.entity.Blog;
 import com.blog.site.core.api.repository.BlogRepository;
+import com.blog.site.core.api.validation.BlogValidation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -34,6 +35,9 @@ public class BlogCommandControllerTest {
 
     @MockBean
     private  BlogRepository userRepository;
+
+    @MockBean
+    private BlogValidation blogValidation;
 
     @Autowired
     MockMvc mockMvc;

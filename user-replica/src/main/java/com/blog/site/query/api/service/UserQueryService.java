@@ -1,9 +1,9 @@
-package com.blog.site.quary.api.service;
+package com.blog.site.query.api.service;
 
 import com.blog.site.core.api.entity.BlogUser;
-import com.blog.site.quary.api.query.FindAllUsers;
-import com.blog.site.quary.api.query.FindUserById;
-import com.blog.site.quary.api.query.FindUserByUsername;
+import com.blog.site.query.api.query.FindAllUsers;
+import com.blog.site.query.api.query.FindUserById;
+import com.blog.site.query.api.query.FindUserByUsername;
 import com.commons.dto.UserDto;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
@@ -16,9 +16,6 @@ import java.util.List;
 public class UserQueryService {
     @Autowired
     private QueryGateway queryGateway;
-    public  void test(){
-
-    }
 
     public BlogUser findUserByUsername(FindUserByUsername query){
         return queryGateway.query(query, ResponseTypes.instanceOf(BlogUser.class)).join();

@@ -1,10 +1,10 @@
-package com.blog.site.quary.api.controller;
+package com.blog.site.query.api.controller;
 
 import com.blog.site.core.api.entity.BlogUser;
-import com.blog.site.quary.api.query.FindAllUsers;
-import com.blog.site.quary.api.query.FindUserById;
-import com.blog.site.quary.api.query.FindUserByUsername;
-import com.blog.site.quary.api.service.UserQueryService;
+import com.blog.site.query.api.query.FindAllUsers;
+import com.blog.site.query.api.query.FindUserById;
+import com.blog.site.query.api.query.FindUserByUsername;
+import com.blog.site.query.api.service.UserQueryService;
 import com.commons.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class UserQueryController {
 
     @GetMapping("/username/{username}")
     public  ResponseEntity<BlogUser> getUserByUsername (@Valid @PathVariable String username) throws ExecutionException, InterruptedException {
-        FindUserByUsername findUserByUsername=new FindUserByUsername(username);
+        FindUserByUsername findUserByUsername=FindUserByUsername.builder().username(username).build();
         BlogUser blogUser = service.findUserByUsername(findUserByUsername);
         log.info("blog user :"+blogUser);
         return  ResponseEntity.status(HttpStatus.OK).body(blogUser);
@@ -38,7 +38,7 @@ public class UserQueryController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<UserDto>  getUserById(@Valid @PathVariable Long id) throws ExecutionException, InterruptedException {
-        FindUserById findUserById=new FindUserById(id.toString());
+        FindUserById findUserById= FindUserById.builder().id(id.toString()).build();
         log.info("getUserByID ");
         UserDto userDto = service.findUserById(findUserById);
 

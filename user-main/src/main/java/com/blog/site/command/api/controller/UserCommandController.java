@@ -26,6 +26,7 @@ public class UserCommandController {
     @Autowired
     private UserRepository repository;
 
+
     private CommandGateway commandGateway;
     public UserCommandController(CommandGateway commandGateway){
         this.commandGateway = commandGateway;

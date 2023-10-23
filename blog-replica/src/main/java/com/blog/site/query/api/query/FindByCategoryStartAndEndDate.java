@@ -2,12 +2,15 @@ package com.blog.site.query.api.query;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.LocalDate;
 
-@Data
+
 @Builder
-public class FindByStartAndEndDate {
+@Getter
+public class FindByCategoryStartAndEndDate {
+    private String category;
     private LocalDate start;
     private LocalDate end;
 

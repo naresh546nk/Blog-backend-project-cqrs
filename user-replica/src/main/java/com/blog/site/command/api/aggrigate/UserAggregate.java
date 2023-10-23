@@ -24,7 +24,7 @@ public class UserAggregate {
     @EventHandler
     public void on(UserCreateEvent event) {
         log.info("Event :"+event);
-        BlogUser user=new BlogUser();
+        BlogUser user= BlogUser.builder().build();
         BeanUtils.copyProperties(event,user);
         log.info("user :"+user);
         repository.save(user);

@@ -36,8 +36,8 @@ public class BlogQueryService {
         List<Blog> blogByCategory = query.join();
         return blogByCategory;
     }
-    public List<Blog> findByStartAndEndDate(FindByStartAndEndDate startAndEndDate) {
-        CompletableFuture<List<Blog>> query = queryGateway.query(startAndEndDate, ResponseTypes.multipleInstancesOf(Blog.class));
+    public List<Blog> findByStartAndEndDate(FindByCategoryStartAndEndDate findByCategoryStartAndEndDate) {
+        CompletableFuture<List<Blog>> query = queryGateway.query(findByCategoryStartAndEndDate, ResponseTypes.multipleInstancesOf(Blog.class));
         List<Blog> join = query.join();
         return join;
     }
