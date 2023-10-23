@@ -18,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @ExtendWith(SpringExtension.class)
@@ -49,9 +50,11 @@ public class UserProjectionTest {
     @Test
     public  void  findUserByUserName_null_test(){
 
-       // Mockito.when(repository.findByUsername(Mockito.anyString())).thenReturn(optionalUser);
-        BlogUser handle = query.handle(FindUserByUsername.builder().username("naresh546.nk@gamil.com").build());
-        Assertions.assertNull(handle);
+        Exception ex = Assertions.assertThrows(NoSuchElementException.class, () -> {
+                    BlogUser handle = query.handle(FindUserByUsername.builder().username("naresh546.nk@gamil.com").build());
+                });
+        Assertions.assertNotNull(ex);
+        Assertions.assertEquals(ex.getMessage().contains("No value present"),true);
     }
 
     @Test
@@ -64,8 +67,12 @@ public class UserProjectionTest {
 
     @Test
     public  void  findUserById_null_test(){
-        UserDto handle = query.handle(FindUserById.builder().id("1").build());
-        Assertions.assertNull(handle);
+        Exception ex = Assertions.assertThrows(NoSuchElementException.class, () -> {
+            UserDto handle = query.handle(FindUserById.builder().id("1").build());
+        });
+
+        Assertions.assertNotNull(ex);
+        Assertions.assertEquals(ex.getMessage().contains("No value present"),true);
     }
 
     @Test

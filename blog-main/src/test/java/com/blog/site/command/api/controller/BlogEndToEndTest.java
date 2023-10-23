@@ -60,9 +60,9 @@ public class BlogEndToEndTest {
             " Accordingly, it is possible to conclude that the country is currently experiencing the phenomenon of mass female incarceration, which reflects the unfair side of the legal system.";
 
     private Blog blog=Blog.builder()
-            .blogName("This is my blogName")
+            .blogName("This is my blogName contains at least 20 characters")
             .authorName("Myke Tyson")
-            .category("Motivation")
+            .category("Motivation contains at least 20 characters")
             .article(article)
             .userId("10")
             .build();

@@ -17,7 +17,7 @@ public class UserValidation {
         boolean nameValidation = Pattern.matches(nameRegx, blogUser.getName());
         if(!nameValidation){
            log.debug("Name Validation failed ");
-            throw new ValidationException("Name validation Failed try with correct name ");
+            throw new ValidationException("Name validation Failed try with correct name and must be 8 character");
         }
         boolean emailValidation = Pattern.matches(emailRegx, blogUser.getUsername());
         if(!emailValidation){

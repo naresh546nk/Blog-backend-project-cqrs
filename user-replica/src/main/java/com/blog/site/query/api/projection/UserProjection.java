@@ -8,6 +8,7 @@ import com.blog.site.query.api.query.FindUserByUsername;
 import com.blog.site.core.api.repository.UserRepository;
 import com.commons.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.queryhandling.QueryExecutionException;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,21 +29,16 @@ public class UserProjection {
     }
 
     @QueryHandler
-    public  BlogUser handle(FindUserByUsername findUserByUsername) {
+    public  BlogUser handle(FindUserByUsername findUserByUsername){
         log.info("Query Handler : "+findUserByUsername);
-        Optional<BlogUser> byUsername = userRepository.findByUsername(findUserByUsername.getUsername());
-        if(byUsername.isPresent()){
-            return byUsername.get();
-        }else{
-            return null;
-        }
+        return userRepository.findByUsername(findUserByUsername.getUsername()).get();
+
     }
 
     @QueryHandler
     public  UserDto handle(FindUserById findUserById) {
         log.info("QueryHandler");
         Optional<BlogUser> userById = userRepository.findById(findUserById.getId());
-        if(userById.isPresent()){
             BlogUser user=userById.get();
             return UserDto.builder()
                     .id(Long.valueOf(user.getId()))
@@ -50,9 +46,5 @@ public class UserProjection {
                     .authority(user.getAuthority())
                     .username(user.getUsername())
                     .build();
-
-        }else{
-          return null;
-        }
     }
 }
