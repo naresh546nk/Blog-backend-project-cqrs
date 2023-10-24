@@ -1,0 +1,130 @@
+2023-10-19 19:19:27.839  INFO 1536 --- [main] com.blog.site.UserApplication            : Starting UserApplication using Java 11.0.17 on LAPTOP-762HISMA with PID 1536 (E:\Practics\EAccedamy-project\Blog-backend-project\user-main\target\classes started by Naresh kumar in E:\Practics\EAccedamy-project\Blog-backend-project\user-main)
+2023-10-19 19:19:27.844  INFO 1536 --- [main] com.blog.site.UserApplication            : The following profiles are active: default
+2023-10-19 19:19:31.368  INFO 1536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-19 19:19:31.776  INFO 1536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 390 ms. Found 1 JPA repository interfaces.
+2023-10-19 19:19:32.175  INFO 1536 --- [main] o.s.c.a.ConfigurationClassPostProcessor  : Cannot enhance @Configuration bean definition 'org.axonframework.springboot.autoconfig.EventProcessingAutoConfiguration' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-10-19 19:19:32.447  INFO 1536 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=bdb4feb8-cc9e-3499-9cb6-e5f3153adcbe
+2023-10-19 19:19:32.599  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#66fb45e5#33' of type [org.axonframework.spring.config.annotation.SpringContextParameterResolverFactoryBuilder$ClasspathParameterResolverFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.600  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#66fb45e5#33' of type [org.axonframework.messaging.annotation.MultiParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.605  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#6ea246af#33' of type [org.axonframework.spring.config.annotation.SpringBeanDependencyResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.607  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#50df37eb' of type [org.axonframework.spring.config.annotation.SpringBeanParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.795  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '__axon-parameter-resolver-factory' of type [org.axonframework.spring.config.ApplicationContextLookupParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.796  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '__axon-parameter-resolver-factory' of type [org.axonframework.messaging.annotation.MultiParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.828  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#1eb906f3' of type [org.axonframework.spring.config.annotation.SpringHandlerDefinitionBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.830  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#1eb906f3' of type [org.axonframework.messaging.annotation.MultiHandlerDefinition] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.836  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#71039ce1' of type [org.axonframework.spring.config.annotation.SpringHandlerEnhancerDefinitionBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.838  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#71039ce1' of type [org.axonframework.messaging.annotation.MultiHandlerEnhancerDefinition] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:32.844  INFO 1536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '__axon-handler-definition' of type [org.axonframework.messaging.annotation.MultiHandlerDefinition] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:19:33.869  INFO 1536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2023-10-19 19:19:33.890  INFO 1536 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-10-19 19:19:33.891  INFO 1536 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2023-10-19 19:19:34.191  INFO 1536 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-10-19 19:19:34.192  INFO 1536 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6254 ms
+2023-10-19 19:19:34.490  INFO 1536 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-10-19 19:19:34.506  WARN 1536 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-10-19 19:19:34.854  INFO 1536 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-10-19 19:19:34.862  INFO 1536 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/blogsite?createDatabaseIfNotExist=true'
+2023-10-19 19:19:35.195  INFO 1536 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-19 19:19:35.338  INFO 1536 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2023-10-19 19:19:35.698  INFO 1536 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-10-19 19:19:35.963  INFO 1536 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2023-10-19 19:19:37.355  INFO 1536 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-19 19:19:37.369  INFO 1536 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-19 19:19:37.984  INFO 1536 --- [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.XomToStringConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/Document
+2023-10-19 19:19:37.985  INFO 1536 --- [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.InputStreamToXomConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/ParsingException
+2023-10-19 19:19:39.087  WARN 1536 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-10-19 19:19:40.290  INFO 1536 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-10-19 19:19:42.098  INFO 1536 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-10-19 19:19:42.218  WARN 1536 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-10-19 19:19:42.863  INFO 1536 --- [main] i.a.a.c.impl.AxonServerManagedChannel    : Requesting connection details from localhost:8124
+2023-10-19 19:19:44.187  INFO 1536 --- [main] i.a.a.c.impl.AxonServerManagedChannel    : Successfully connected to localhost:8124
+2023-10-19 19:19:44.208  INFO 1536 --- [main] i.a.a.connector.impl.ControlChannelImpl  : Connected instruction stream for context 'default'. Sending client identification
+2023-10-19 19:19:44.234  INFO 1536 --- [main] i.a.a.c.command.impl.CommandChannelImpl  : CommandChannel for context 'default' connected, 0 command handlers registered
+2023-10-19 19:19:44.241  INFO 1536 --- [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.commons.commands.DeleteUserCommand' in context 'default'
+2023-10-19 19:19:44.254  INFO 1536 --- [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.commons.commands.CreateUserCommand' in context 'default'
+2023-10-19 19:19:44.285  INFO 1536 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-10-19 19:19:44.449  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-10-19 19:19:44.457  INFO 1536 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-10-19 19:19:44.932  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-10-19 19:19:44.933  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-10-19 19:19:44.933  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-10-19 19:19:44.933  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-10-19 19:19:44.933  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-10-19 19:19:44.933  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-10-19 19:19:44.933  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-10-19 19:19:45.266  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-10-19 19:19:45.272  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-10-19 19:19:45.277  INFO 1536 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-10-19 19:19:45.287  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1697723385283 with initial instances count: 7
+2023-10-19 19:19:45.291  INFO 1536 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application USER with eureka with status UP
+2023-10-19 19:19:45.292  INFO 1536 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1697723385292, current=UP, previous=STARTING]
+2023-10-19 19:19:45.294  INFO 1536 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USER/LAPTOP-762HISMA:user:8000: registering service...
+2023-10-19 19:19:45.317  INFO 1536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2023-10-19 19:19:45.319  INFO 1536 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8000
+2023-10-19 19:19:45.379  INFO 1536 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USER/LAPTOP-762HISMA:user:8000 - registration status: 204
+2023-10-19 19:19:46.123  INFO 1536 --- [main] com.blog.site.UserApplication            : Started UserApplication in 20.297 seconds (JVM running for 21.521)
+2023-10-19 19:24:49.170  INFO 18396 --- [main] com.blog.site.UserApplication            : Starting UserApplication using Java 11.0.17 on LAPTOP-762HISMA with PID 18396 (E:\Practics\EAccedamy-project\Blog-backend-project\user-main\target\classes started by Naresh kumar in E:\Practics\EAccedamy-project\Blog-backend-project\user-main)
+2023-10-19 19:24:49.175  INFO 18396 --- [main] com.blog.site.UserApplication            : The following profiles are active: default
+2023-10-19 19:24:52.743  INFO 18396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-19 19:24:53.126  INFO 18396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 369 ms. Found 1 JPA repository interfaces.
+2023-10-19 19:24:53.518  INFO 18396 --- [main] o.s.c.a.ConfigurationClassPostProcessor  : Cannot enhance @Configuration bean definition 'org.axonframework.springboot.autoconfig.EventProcessingAutoConfiguration' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2023-10-19 19:24:53.773  INFO 18396 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=bdb4feb8-cc9e-3499-9cb6-e5f3153adcbe
+2023-10-19 19:24:53.928  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#5fcd1c5f#33' of type [org.axonframework.spring.config.annotation.SpringContextParameterResolverFactoryBuilder$ClasspathParameterResolverFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:53.928  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#5fcd1c5f#33' of type [org.axonframework.messaging.annotation.MultiParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:53.932  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#7f287b98#33' of type [org.axonframework.spring.config.annotation.SpringBeanDependencyResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:53.934  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#156cfa20' of type [org.axonframework.spring.config.annotation.SpringBeanParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:54.132  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '__axon-parameter-resolver-factory' of type [org.axonframework.spring.config.ApplicationContextLookupParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:54.132  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '__axon-parameter-resolver-factory' of type [org.axonframework.messaging.annotation.MultiParameterResolverFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:54.164  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#7ba06506' of type [org.axonframework.spring.config.annotation.SpringHandlerDefinitionBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:54.165  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#7ba06506' of type [org.axonframework.messaging.annotation.MultiHandlerDefinition] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:54.170  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#28f05b0c' of type [org.axonframework.spring.config.annotation.SpringHandlerEnhancerDefinitionBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:54.172  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#28f05b0c' of type [org.axonframework.messaging.annotation.MultiHandlerEnhancerDefinition] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:54.177  INFO 18396 --- [main] trationDelegate$BeanPostProcessorChecker : Bean '__axon-handler-definition' of type [org.axonframework.messaging.annotation.MultiHandlerDefinition] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 19:24:55.141  INFO 18396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2023-10-19 19:24:55.160  INFO 18396 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-10-19 19:24:55.160  INFO 18396 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2023-10-19 19:24:55.433  INFO 18396 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-10-19 19:24:55.433  INFO 18396 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6148 ms
+2023-10-19 19:24:55.691  INFO 18396 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-10-19 19:24:55.700  WARN 18396 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-10-19 19:24:56.028  INFO 18396 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-10-19 19:24:56.037  INFO 18396 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/blogsite?createDatabaseIfNotExist=true'
+2023-10-19 19:24:56.349  INFO 18396 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-19 19:24:56.451  INFO 18396 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2023-10-19 19:24:56.694  INFO 18396 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-10-19 19:24:56.921  INFO 18396 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2023-10-19 19:24:58.254  INFO 18396 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-19 19:24:58.271  INFO 18396 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-19 19:24:58.908  INFO 18396 --- [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.XomToStringConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/Document
+2023-10-19 19:24:58.910  INFO 18396 --- [main] o.a.serialization.ChainingConverter      : ContentTypeConverter of type [class org.axonframework.serialization.xml.InputStreamToXomConverter] is ignored. It seems to rely on a class that is not available in the class loader: nu/xom/ParsingException
+2023-10-19 19:24:59.940  WARN 18396 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-10-19 19:25:01.166  INFO 18396 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-10-19 19:25:02.847  INFO 18396 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-10-19 19:25:02.972  WARN 18396 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-10-19 19:25:03.731  INFO 18396 --- [main] i.a.a.c.impl.AxonServerManagedChannel    : Requesting connection details from localhost:8124
+2023-10-19 19:25:05.176  INFO 18396 --- [main] i.a.a.c.impl.AxonServerManagedChannel    : Successfully connected to localhost:8124
+2023-10-19 19:25:05.201  INFO 18396 --- [main] i.a.a.connector.impl.ControlChannelImpl  : Connected instruction stream for context 'default'. Sending client identification
+2023-10-19 19:25:05.223  INFO 18396 --- [main] i.a.a.c.command.impl.CommandChannelImpl  : CommandChannel for context 'default' connected, 0 command handlers registered
+2023-10-19 19:25:05.229  INFO 18396 --- [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.commons.commands.DeleteUserCommand' in context 'default'
+2023-10-19 19:25:05.243  INFO 18396 --- [main] i.a.a.c.command.impl.CommandChannelImpl  : Registered handler for command 'com.commons.commands.CreateUserCommand' in context 'default'
+2023-10-19 19:25:05.271  INFO 18396 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-10-19 19:25:05.406  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-10-19 19:25:05.412  INFO 18396 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-10-19 19:25:05.913  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-10-19 19:25:05.914  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-10-19 19:25:05.914  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-10-19 19:25:05.914  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-10-19 19:25:05.914  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-10-19 19:25:05.914  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-10-19 19:25:05.914  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-10-19 19:25:06.281  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-10-19 19:25:06.287  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-10-19 19:25:06.293  INFO 18396 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-10-19 19:25:06.304  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1697723706301 with initial instances count: 7
+2023-10-19 19:25:06.309  INFO 18396 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application USER with eureka with status UP
+2023-10-19 19:25:06.310  INFO 18396 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1697723706310, current=UP, previous=STARTING]
+2023-10-19 19:25:06.314  INFO 18396 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USER/LAPTOP-762HISMA:user:8000: registering service...
+2023-10-19 19:25:06.337  INFO 18396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2023-10-19 19:25:06.339  INFO 18396 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8000
+2023-10-19 19:25:06.407  INFO 18396 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USER/LAPTOP-762HISMA:user:8000 - registration status: 204
+2023-10-19 19:25:07.120  INFO 18396 --- [main] com.blog.site.UserApplication            : Started UserApplication in 19.86 seconds (JVM running for 21.049)

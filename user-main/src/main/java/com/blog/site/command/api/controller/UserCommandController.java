@@ -26,13 +26,13 @@ public class UserCommandController {
     @Autowired
     private UserRepository repository;
 
+
     private CommandGateway commandGateway;
     public UserCommandController(CommandGateway commandGateway){
         this.commandGateway = commandGateway;
     }
 
     @PostMapping("/add")
-    @SneakyThrows
     public  ResponseEntity<BlogUser> register(@Valid @RequestBody BlogUser blogUser) throws ValidationException {
         UserValidation.isValidUser(blogUser);
         log.info("User Validation passed ..");
@@ -41,7 +41,7 @@ public class UserCommandController {
         log.info("User Saved "+blogUserSaved);
         CreateUserCommand userCommand= CreateUserCommand.builder()
                 .uuid(UUID.randomUUID().toString())
-                //.id(blogUserSaved.getId().toString())
+                .id(blogUserSaved.getId().toString())
                 .name(blogUser.getName())
                 .username(blogUser.getUsername())
                 .authority(blogUser.getAuthority())

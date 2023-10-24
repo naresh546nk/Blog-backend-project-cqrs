@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
-ARG APP_NAME="blog-site"
+ARG APP_NAME="user"
 ARG JAR_FILE="/target/${APP_NAME}.jar"
 
 COPY ${JAR_FILE} app.jar

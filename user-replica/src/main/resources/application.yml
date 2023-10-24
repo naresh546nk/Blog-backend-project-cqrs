@@ -1,22 +1,40 @@
 server:
-  port: 8002
+  port: 8001
 
 spring:
   profiles:
     active: default
   application:
     name: user-replica
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
   data:
     mongodb:
       port: 27017
       host: localhost
       database: blogReadDb
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
   h2:
     console:
       enabled: true
-
-
+#eureka:
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      default-zone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+#
+#logging:
+#  file:
+#    name: ${logging.file.path}/user-replica.log
+#    path: E:/Practics/EAccedamy-project/Blog-backend-project/Log
+#  pattern:
+#    rolling-file-name: ${logging.file.path}/user-replica-%d{yyyy-MM-dd}.%i.log
+#    file:
+#      max-history: 7
+#
+#

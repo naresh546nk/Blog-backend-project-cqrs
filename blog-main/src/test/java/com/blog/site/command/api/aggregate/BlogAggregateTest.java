@@ -5,15 +5,16 @@ import com.commons.commands.DeleteBlogCommand;
 import com.commons.events.BlogCreateEvent;
 import com.commons.events.DeleteBlogEvent;
 import org.axonframework.test.aggregate.AggregateTestFixture;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 
 import java.util.UUID;
 
+
 public class BlogAggregateTest {
     private AggregateTestFixture<BlogAggregate> fixture;
-    @Before
+    @BeforeEach
     public void setUp() {
         fixture = new AggregateTestFixture<>(BlogAggregate.class);
     }

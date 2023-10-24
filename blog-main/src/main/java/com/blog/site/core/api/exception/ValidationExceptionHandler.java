@@ -25,7 +25,7 @@ public class ValidationExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        log.debug("errors :"+errors);
+        log.error("errors :"+errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
@@ -35,8 +35,8 @@ public class ValidationExceptionHandler {
     public ResponseEntity<Map<String, String>> handleValidationExceptions(
             ValidationException ex) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("message","ex.getMessage");
-        log.debug("errors :"+errors);
+        errors.put("message",ex.getMessage());
+        log.error("errors :"+errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
@@ -48,7 +48,7 @@ public class ValidationExceptionHandler {
             Exception ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("Exception ",ex.getMessage());
-            log.debug("Exception :"+ex);;
+            log.error("Exception :"+ex);;
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errors);
     }
 }

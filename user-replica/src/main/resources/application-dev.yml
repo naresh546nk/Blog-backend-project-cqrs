@@ -3,17 +3,12 @@ server:
 spring:
   application:
     name: Blog-Site
-  datasource:
-    url: jdbc:mysql://blog-site-database.ckzrz1mw2ejg.us-east-1.rds.amazonaws.com:3306/blogs
-    username: root
-    password: Password
-    driver-class-name: com.mysql.jdbc.Driver
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+  data:
+    mongodb:
+      uri: mongodb+srv://nareshkumar546nk:Password@mongocluster.3khr6ur.mongodb.net/
+      database: blogReadDb
 #    hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
   h2:
     console:

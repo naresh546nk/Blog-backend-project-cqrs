@@ -23,10 +23,11 @@ public class BlogMongoTempletService {
         return categories;
 
     }
-    public List<Blog> findByStartAndEndDate(LocalDate start, LocalDate end) {
+    public List<Blog> findByStartAndEndDate(String category, LocalDate start, LocalDate end) {
         Query query=new Query();
         query.addCriteria(
                 new Criteria().andOperator(
+                        Criteria.where("category").is(category),
                         Criteria.where("createdOn").gte(start),
                         Criteria.where("createdOn").lte(end)
                 )

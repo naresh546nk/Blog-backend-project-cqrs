@@ -24,17 +24,17 @@ public class UserAggregate {
     @EventHandler
     public void on(UserCreateEvent event) {
         log.info("Event :"+event);
-        BlogUser user=new BlogUser();
+        BlogUser user= BlogUser.builder().build();
         BeanUtils.copyProperties(event,user);
         log.info("user :"+user);
         repository.save(user);
     }
 
     @EventHandler
-    public  void on(DeleteUserEvent evnt){
-        log.info("Event : {}",evnt);
-        repository.deleteById(evnt.getId().toString());
-        log.info("User deleted successfully with Id : {}",evnt.getId());
+    public  void on(DeleteUserEvent event){
+        log.info("Event : {}",event);
+        repository.deleteById(event.getId().toString());
+        log.info("User deleted successfully with Id : {}",event.getId());
 
     }
 

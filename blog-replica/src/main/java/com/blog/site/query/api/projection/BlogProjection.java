@@ -3,7 +3,7 @@ package com.blog.site.query.api.projection;
 import com.blog.site.core.api.entity.Blog;
 import com.blog.site.core.api.repository.BlogRepository;
 import com.blog.site.core.api.service.BlogMongoTempletService;
-import com.blog.site.core.api.service.UserService;
+import com.blog.site.core.api.service.UserServiceRestTemplet;
 import com.blog.site.query.api.query.*;
 import com.commons.dto.BlogDto;
 import com.commons.dto.UserDto;
@@ -22,10 +22,10 @@ public class BlogProjection {
     private BlogRepository repository;
 
     @Autowired
-    private UserService userService;
+    private UserServiceRestTemplet userService;
 
     @Autowired
-    private BlogMongoTempletService service;
+    private BlogMongoTempletService mongoTemplateService;
 
     @QueryHandler
     public List<Blog> handle(FindAllBlogs findAllBlogs){
@@ -35,7 +35,7 @@ public class BlogProjection {
     @QueryHandler
     public List<String> handle(FindDistinctCategory distinctCategory){
         log.info("Fetching all Category ");
-        return service.findDistinctCategory();
+        return mongoTemplateService.findDistinctCategory();
     }
     @QueryHandler
     public List<Blog> handle(FindByCategory findByCategory){
@@ -44,9 +44,9 @@ public class BlogProjection {
         return byCategory;
     }
     @QueryHandler
-    public List<Blog> handle(FindByStartAndEndDate findByStartAndEndDate){
+    public List<Blog> handle(FindByCategoryStartAndEndDate findByStartAndEndDate){
         log.info("Fetching by start and end data ");
-        return service.findByStartAndEndDate(findByStartAndEndDate.getStart(),findByStartAndEndDate.getEnd());
+        return mongoTemplateService.findByStartAndEndDate(findByStartAndEndDate.getCategory(),findByStartAndEndDate.getStart(),findByStartAndEndDate.getEnd());
     }
 
     @QueryHandler

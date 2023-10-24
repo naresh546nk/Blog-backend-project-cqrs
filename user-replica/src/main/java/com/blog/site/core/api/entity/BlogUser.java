@@ -8,12 +8,9 @@ import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
 @Setter
+@Getter
 @Builder
-@ToString
 @Document()
 public class BlogUser {
     @Id

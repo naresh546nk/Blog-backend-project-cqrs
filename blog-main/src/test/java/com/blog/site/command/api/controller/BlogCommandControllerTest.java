@@ -1,22 +1,20 @@
 package com.blog.site.command.api.controller;
 
 import com.blog.site.core.api.entity.Blog;
-import com.blog.site.core.api.exception.ValidationException;
 import com.blog.site.core.api.repository.BlogRepository;
+import com.blog.site.core.api.validation.BlogValidation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -24,10 +22,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@RunWith(SpringRunner.class)
-@WebMvcTest
-@AutoConfigureMockMvc
-@ContextConfiguration(classes = {BlogCommandController.class, CommandGateway.class, BlogRepository.class})
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(BlogCommandController.class)
 @Slf4j
 public class BlogCommandControllerTest {
 
@@ -39,6 +35,9 @@ public class BlogCommandControllerTest {
 
     @MockBean
     private  BlogRepository userRepository;
+
+    @MockBean
+    private BlogValidation blogValidation;
 
     @Autowired
     MockMvc mockMvc;
@@ -62,9 +61,9 @@ public class BlogCommandControllerTest {
             " Accordingly, it is possible to conclude that the country is currently experiencing the phenomenon of mass female incarceration, which reflects the unfair side of the legal system.";
 
     private Blog blog=Blog.builder()
-            .blogName("This is my blogName")
+            .blogName("This is my blogName contains at list 20 character")
             .authorName("Myke Tyson")
-            .category("Motivation")
+            .category("Motivation contains at list 20 character")
             .article(article)
             .userId("10")
             .build();
@@ -93,15 +92,12 @@ public class BlogCommandControllerTest {
         Blog savedBlog=blog;
         savedBlog.setId(Long.valueOf(5));
         String json=objectMapper.writeValueAsString(testBlog);
-        Mockito.when(userRepository.save(Mockito.any(Blog.class))).thenReturn(savedBlog);        Exception ex = Assertions.assertThrows(Exception.class, () -> {
+        Mockito.when(userRepository.save(Mockito.any(Blog.class))).thenReturn(savedBlog);
+
             String contentAsString = mockMvc.perform(post(BASE_URL + "/add").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                     .andReturn().getResponse().getContentAsString();
-            Assertions.assertEquals(contentAsString.contains("blogName"), true);
-            Assertions.assertEquals(contentAsString.contains("id"), true);
-            Assertions.assertEquals(contentAsString.contains("Motivation"), true);
-            log.info("Response : {}",contentAsString);
-        });
+            Assertions.assertEquals(contentAsString.contains("message"), true);
 
     }
 
@@ -113,15 +109,11 @@ public class BlogCommandControllerTest {
         savedBlog.setId(Long.valueOf(5));
         String json=objectMapper.writeValueAsString(testBlog);
         Mockito.when(userRepository.save(Mockito.any(Blog.class))).thenReturn(savedBlog);
-        Exception ex = Assertions.assertThrows(Exception.class, () -> {
             String contentAsString = mockMvc.perform(post(BASE_URL + "/add").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                     .andReturn().getResponse().getContentAsString();
-            Assertions.assertEquals(contentAsString.contains("blogName"), true);
-            Assertions.assertEquals(contentAsString.contains("id"), true);
-            Assertions.assertEquals(contentAsString.contains("Motivation"), true);
-            log.info("Response : {}",contentAsString);
-        });
+            Assertions.assertEquals(contentAsString.contains("message"), true);
+
 
     }
 
@@ -133,16 +125,14 @@ public class BlogCommandControllerTest {
         savedBlog.setId(Long.valueOf(5));
         String json = objectMapper.writeValueAsString(testBlog);
         Mockito.when(userRepository.save(Mockito.any(Blog.class))).thenReturn(savedBlog);
-        Exception ex = Assertions.assertThrows(Exception.class, () -> {
             String contentAsString = mockMvc.perform(post(BASE_URL + "/add").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                     .andReturn().getResponse().getContentAsString();
-            Assertions.assertEquals(contentAsString.contains("blogName"), true);
-            Assertions.assertEquals(contentAsString.contains("id"), true);
-            Assertions.assertEquals(contentAsString.contains("Motivation"), true);
             log.info("Response : {}", contentAsString);
-        });
+            Assertions.assertEquals(contentAsString.contains("Blog category"), true);
+
     }
+
     @Test
     public  void create_blog_invalid_article_test() throws Exception {
         Blog testBlog=blog;
@@ -151,15 +141,11 @@ public class BlogCommandControllerTest {
         savedBlog.setId(Long.valueOf(5));
         String json=objectMapper.writeValueAsString(testBlog);
         Mockito.when(userRepository.save(Mockito.any(Blog.class))).thenReturn(savedBlog);
-        Exception ex = Assertions.assertThrows(Exception.class, () -> {
             String contentAsString = mockMvc.perform(post(BASE_URL + "/add").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
                     .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                     .andReturn().getResponse().getContentAsString();
-            Assertions.assertEquals(contentAsString.contains("blogName"), true);
-            Assertions.assertEquals(contentAsString.contains("id"), true);
-            Assertions.assertEquals(contentAsString.contains("Motivation"), true);
-            log.info("Response : {}", contentAsString);
-        });
+            Assertions.assertEquals(contentAsString.contains("message"), true);
+            Assertions.assertEquals(contentAsString.contains("200"), true);
     }
 
     @Test
